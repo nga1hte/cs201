@@ -7,7 +7,7 @@ void merge(int[], int, int[], int, int[]);
 
 
 int main(){
-    int arr[] = {9, 4, 7, 6, 5, 8};
+    int arr[] = {9, 4, 7, 1, 2, 9};
     int size = sizeof(arr)/sizeof(arr[0]);
     print_arr(arr, size);
     sort(arr, size);
