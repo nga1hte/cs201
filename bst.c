@@ -102,10 +102,26 @@ node *delete(node *root, int data){
             root->data = temp->data;
             root->right = delete(root->right, temp->data);
         }
-        
     }
     return root;
 
+}
+
+node *getSecondLargest(node *root){
+    if(root->right == NULL && root->left != NULL){
+        return findMax(root->left);
+    }
+    if(root->right != NULL && root->right->left == NULL && root->right->right == NULL)
+        return root;
+    return getSecondLargest(root->right);
+}
+
+node *getSecondSmallest(node *root){
+    if(root->left == NULL && root->right != NULL)
+        return findMin(root->right);
+    if(root->left != NULL && root->left->right == NULL && root->left->left == NULL)
+        return  root;
+    return getSecondSmallest(root->left);
 }
 
 
@@ -129,8 +145,8 @@ int main(){
     printf("\n");
     postorder(bstroot);
     printf("\n");
-    bstroot = delete(bstroot, 7);
-    inorder(bstroot);
-    printf("\n");
+    printf("%d\n",getSecondLargest(bstroot)->data);
+    printf("%d\n",getSecondSmallest(bstroot)->data);
+    
     
 }
